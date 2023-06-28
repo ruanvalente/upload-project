@@ -42,7 +42,7 @@ export default {
         );
         const { data, error } = await supabase.storage
           .from("uploads")
-          .upload("files", `${this.selectedFile}.png`);
+          .upload("files", this.selectedFile);
 
         console.log(data);
 
@@ -65,24 +65,10 @@ export default {
         .from("uploads")
         .createSignedUrl("files", 60); // Defina a duração do link em segundos
 
-      console.log(data);
       if (error) {
         console.error(error);
       } else {
-        const downloadUrl = data.signedURL;
-
-        // Fazer o download do arquivo usando o método fetch
-        const response = await fetch(downloadUrl);
-        const blob = await response.blob();
-
-        // Criar um link de download para o arquivo
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", "file.png"); // Substitua pelo nome desejado do arquivo e sua extensão
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        console.log(data.signedUrl);
       }
     },
   },
