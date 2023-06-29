@@ -1,6 +1,6 @@
-// import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 
-// const supabaseUrl = process.env.VUE_APP_SUPABASE_URL;
-// const supabaseKey = process.env.VUE_APP_SUPABASE_KEY;
+const supabaseUrl = process.env.VUE_APP_SUPABASE_URL;
+const supabaseKey = process.env.VUE_APP_SUPABASE_KEY;
 
-// export const supabaseClient = createClient(supabaseUrl, supabaseKey);
+export const supabaseClient = createClient(supabaseUrl, supabaseKey);
