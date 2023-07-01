@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container container>
     <h2 class="text-center my-8">Form Upload - Example</h2>
     <v-file-input
       label="Selecione o arquivo"
@@ -45,6 +45,7 @@
 
 <script>
 import { createClient } from "@supabase/supabase-js";
+import { sanitizeText } from "@/helpers/sanitizeText";
 
 export default {
   name: "HomePage",
@@ -62,16 +63,15 @@ export default {
   methods: {
     async uploadFile() {
       this.sendLoadingFile = true;
-
+      const santizeFile = sanitizeText(this.selectedFile.name);
       if (this.selectedFile) {
         const supabase = createClient(
           process.env.VUE_APP_SUPABASE_URL,
           process.env.VUE_APP_SUPABASE_KEY
         );
-
         const { error } = await supabase.storage
           .from("uploads")
-          .upload(this.selectedFile.name, this.selectedFile);
+          .upload(santizeFile, this.selectedFile);
 
         if (error) {
           this.snackBar.openSnackBar = true;
