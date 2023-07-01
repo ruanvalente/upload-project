@@ -96,7 +96,7 @@ export default {
       );
       const { error, data } = await supabase.storage
         .from("uploads")
-        .createSignedUrl(this.selectedFile.name, 60);
+        .createSignedUrl(sanitizeText(this.selectedFile.name), 60);
 
       if (error) {
         console.error(error);
