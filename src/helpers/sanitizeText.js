@@ -1,5 +1,13 @@
 export function sanitizeText(text) {
-  const normalizedText = text.normalize("NFD").replaceAll("-", " ");
-  const removedAccentsText = normalizedText.replace(/[\u0300-\u036f]/g, "");
-  return removedAccentsText;
+  const regex = /^(\w|\/|!|-|\.|\*|'|\(|\)| |&|\$|@|=|;|:|\+|,|\?)*$/;
+  const normalizedText = text
+    .normalize("NFD")
+    .replaceAll("-", " ")
+    .replace(/\d/g, "")
+    .trim();
+  const removedSpecialCharsText = normalizedText
+    .split("")
+    .filter((char) => regex.test(char))
+    .join("");
+  return removedSpecialCharsText;
 }
