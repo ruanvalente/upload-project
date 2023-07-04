@@ -9,6 +9,7 @@
           multiple
           outlined
           clearable
+          @change="handleSelectionChange"
         >
           <template v-slot:selection="{ item, index }">
             <v-chip
@@ -39,6 +40,7 @@ export default {
     return {
       selectedItems: [],
       items: [
+        "Todas",
         "Harvard University",
         "Stanford University",
         "Massachusetts Institute of Technology",
@@ -143,7 +145,19 @@ export default {
         "University of Western Ontario",
         "York University",
       ],
+      previousItems: [],
     };
+  },
+  methods: {
+    handleSelectionChange() {
+      if (this.selectedItems.includes("Todas")) {
+        this.selectedItems = ["Todas"]; // Seleciona apenas "Todas"
+      } else if (this.previousItems.includes("Todas")) {
+        this.selectedItems = this.previousItems; // Restaura itens anteriores
+      } else {
+        this.previousItems = this.selectedItems; // Armazena itens anteriores
+      }
+    },
   },
   computed: {
     selectedItemsText() {
