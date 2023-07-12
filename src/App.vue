@@ -1,6 +1,7 @@
 <template>
   <navbar-layout>
     <v-main>
+      <datalist-page />
       <home-page />
       <combobox-page />
     </v-main>
@@ -11,6 +12,7 @@
 import NavbarLayout from "./layouts/NavbarLayout.vue";
 import HomePage from "./pages/HomePage.vue";
 import ComboboxPage from "./pages/ComboboxPage.vue";
+import DatalistPage from "./pages/Datalist.vue";
 
 export default {
   name: "App",
@@ -18,6 +20,7 @@ export default {
     HomePage,
     NavbarLayout,
     ComboboxPage,
+    DatalistPage,
   },
 };
 </script>

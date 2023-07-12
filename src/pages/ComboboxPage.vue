@@ -29,6 +29,8 @@
             </span>
           </template>
         </v-select>
+        Previous: {{ previousItems }} <br>
+        SelectedItens: {{  selectedItems }}
       </v-container>
     </v-main>
   </v-app>
