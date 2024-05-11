@@ -4,7 +4,8 @@
       <!-- <datalist-page />
       <home-page />
       <combobox-page /> -->
-      <p-d-f-render />
+      <!-- <p-d-f-render /> -->
+      <p-d-f-render-browser />
     </v-main>
   </navbar-layout>
 </template>
@@ -14,7 +15,8 @@ import NavbarLayout from "./layouts/NavbarLayout.vue";
 // import HomePage from "./pages/HomePage.vue";
 // import ComboboxPage from "./pages/ComboboxPage.vue";
 // import DatalistPage from "./pages/Datalist.vue";
-import PDFRender from "./pages/PDFRender.vue";
+// import PDFRender from "./pages/PDFRender.vue";
+import PDFRenderBrowser from "./pages/PDFRenderBrowser.vue";
 
 export default {
   name: "App",
@@ -23,7 +25,8 @@ export default {
     NavbarLayout,
     // ComboboxPage,
     // DatalistPage,
-    PDFRender,
+    // PDFRender,
+    PDFRenderBrowser,
   },
 };
 </script>
